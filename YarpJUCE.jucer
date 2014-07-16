@@ -6,6 +6,9 @@
               companyWebsite="hplustech.com">
   <MAINGROUP id="TTMB3Q" name="YarpJUCE">
     <GROUP id="{EEE0CE1E-5457-EDDD-CEC5-98B83A7B900F}" name="Source">
+      <FILE id="RmuYDV" name="YarpInterface.cpp" compile="1" resource="0"
+            file="Source/YarpInterface.cpp"/>
+      <FILE id="D1nBN5" name="YarpInterface.h" compile="0" resource="0" file="Source/YarpInterface.h"/>
       <FILE id="ovWHDd" name="GUIComponents.cpp" compile="1" resource="0"
             file="Source/GUIComponents.cpp"/>
       <FILE id="e9bkka" name="GUIComponents.h" compile="0" resource="0" file="Source/GUIComponents.h"/>

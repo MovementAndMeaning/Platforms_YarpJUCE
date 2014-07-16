@@ -57,11 +57,14 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<TextEditor> textEditor;
+    ScopedPointer<TextEditor> textEditorNameserver;
     ScopedPointer<TextButton> textButton;
     ScopedPointer<Label> label;
     ScopedPointer<Label> label2;
-    ScopedPointer<TextEditor> textEditor2;
+    ScopedPointer<TextEditor> textEditorPort;
+    ScopedPointer<TextEditor> textEditorOutput;
+    ScopedPointer<TextButton> textButtonDisconnect;
+    ScopedPointer<Label> label3;
 
 
     //==============================================================================
