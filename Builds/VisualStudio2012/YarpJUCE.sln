@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2012
+Project("{7857788A-B8BF-E50D-40D9-7E2CB2D0E0D3}") = "YarpJUCE", "YarpJUCE.vcxproj", "{D85F53B6-A61F-6F4F-71C5-8D60B88B2CCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D85F53B6-A61F-6F4F-71C5-8D60B88B2CCC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D85F53B6-A61F-6F4F-71C5-8D60B88B2CCC}.Debug|Win32.Build.0 = Debug|Win32
+		{D85F53B6-A61F-6F4F-71C5-8D60B88B2CCC}.Release|Win32.ActiveCfg = Release|Win32
+		{D85F53B6-A61F-6F4F-71C5-8D60B88B2CCC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
