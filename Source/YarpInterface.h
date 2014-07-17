@@ -12,6 +12,7 @@
 #define YARPINTERFACE_H_INCLUDED
 
 #include <yarp/os/all.h>
+#include <yarp/os/impl/NameConfig.h>
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class YarpInterface : public Thread, public ChangeBroadcaster {
@@ -20,6 +21,7 @@ public:
 	YarpInterface();
 	~YarpInterface();
 	bool setPortName(yarp::os::ConstString name);
+	bool setNSAddress(yarp::os::ConstString addr);
 	void run();
 
 	String getOutputText() {return textOutput;}
@@ -29,7 +31,9 @@ public:
 private:
 	String textOutput;
 	yarp::os::ConstString portName;
+	yarp::os::ConstString nsIPAddr;
 	yarp::os::Network yarp;
+	yarp::os::impl::NameConfig nameConfig;
 	yarp::os::BufferedPort<yarp::os::Bottle> yarpPort;
 };
 

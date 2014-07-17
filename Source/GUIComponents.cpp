@@ -26,6 +26,7 @@
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 void GUIComponents::changeListenerCallback(ChangeBroadcaster* changeSource) {
+	textEditorOutput->setCaretPosition((textEditorOutput->getText().length()-1));
 	this->repaint();
 }
 
@@ -173,8 +174,10 @@ void GUIComponents::buttonClicked (Button* buttonThatWasClicked)
 		if (myYarpInterface != NULL)
 			delete myYarpInterface;
 		myYarpInterface = new YarpInterface();
-		yarp::os::ConstString port = textEditorPort->getText().getCharPointer();
-		if (myYarpInterface->setPortName(port)) {
+		yarp::os::ConstString nsIP = textEditorNameserver->getText().getCharPointer();
+		myYarpInterface->setNSAddress(nsIP);
+		yarp::os::ConstString portstr = textEditorPort->getText().getCharPointer();
+		if (myYarpInterface->setPortName(portstr)) {
 			myYarpInterface->addChangeListener(this);
 			myYarpInterface->startThread();
 		}
