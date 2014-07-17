@@ -67,10 +67,10 @@ public:
                                         Colours::lightgrey,
                                         DocumentWindow::allButtons)
         {
-            //setContentOwned (new MainContentComponent(), true);
 			setContentOwned ( new GUIComponents(), true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
+			setResizable(true, true);
         }
 
         void closeButtonPressed()

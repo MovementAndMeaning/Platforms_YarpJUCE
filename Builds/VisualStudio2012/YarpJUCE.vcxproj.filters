@@ -297,9 +297,6 @@
     <ClCompile Include="..\..\Source\GUIComponents.cpp">
       <Filter>YarpJUCE\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
-      <Filter>YarpJUCE\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>YarpJUCE\Source</Filter>
     </ClCompile>
@@ -1428,9 +1425,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\GUIComponents.h">
-      <Filter>YarpJUCE\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>YarpJUCE\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">
