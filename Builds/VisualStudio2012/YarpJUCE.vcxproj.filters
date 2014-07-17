@@ -294,9 +294,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\YarpInterface.cpp">
-      <Filter>YarpJUCE\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\GUIComponents.cpp">
       <Filter>YarpJUCE\Source</Filter>
     </ClCompile>
@@ -1425,11 +1422,11 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\juce_video.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\YarpInterface.cpp">
+      <Filter>YarpJUCE\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\YarpInterface.h">
-      <Filter>YarpJUCE\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\GUIComponents.h">
       <Filter>YarpJUCE\Source</Filter>
     </ClInclude>
@@ -2752,6 +2749,9 @@
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\YarpInterface.h">
+      <Filter>YarpJUCE\Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

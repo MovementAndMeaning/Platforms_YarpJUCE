@@ -18,12 +18,18 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include <yarp/os/all.h>
 //[/Headers]
 
 #include "GUIComponents.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
+void GUIComponents::changeListenerCallback(ChangeBroadcaster* changeSource) {
+	this->repaint();
+}
+
+
 //[/MiscUserDefs]
 
 //==============================================================================
@@ -70,7 +76,7 @@ GUIComponents::GUIComponents ()
     addAndMakeVisible (textEditorOutput = new TextEditor ("new text editor"));
     textEditorOutput->setMultiLine (true);
     textEditorOutput->setReturnKeyStartsNewLine (true);
-    textEditorOutput->setReadOnly (false);
+    textEditorOutput->setReadOnly (true);
     textEditorOutput->setScrollbarsShown (true);
     textEditorOutput->setCaretVisible (true);
     textEditorOutput->setPopupMenuEnabled (true);
@@ -90,12 +96,15 @@ GUIComponents::GUIComponents ()
 
 
     //[UserPreSize]
+	textEditorNameserver->setText("127.0.0.1");
+	textEditorPort->setText("/YarpJUCE");
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (800, 600);
 
 
     //[Constructor] You can add your own custom stuff here..
+	myYarpInterface = NULL;
     //[/Constructor]
 }
 
@@ -115,6 +124,8 @@ GUIComponents::~GUIComponents()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+	if (myYarpInterface != NULL)
+		delete myYarpInterface;
     //[/Destructor]
 }
 
@@ -125,8 +136,15 @@ void GUIComponents::paint (Graphics& g)
     //[/UserPrePaint]
 
     g.fillAll (Colours::white);
-
     //[UserPaint] Add your own custom painting code here..
+	String output;
+	DBG("paint");
+	if (myYarpInterface!= NULL) {
+		myYarpInterface->lock.enter();
+		output = myYarpInterface->getOutputText();
+		myYarpInterface->lock.exit();
+		textEditorOutput->setText(output);
+	}
     //[/UserPaint]
 }
 
@@ -148,17 +166,29 @@ void GUIComponents::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
-
     if (buttonThatWasClicked == textButton)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
 		DBG("connect btn\n");
+		if (myYarpInterface != NULL)
+			delete myYarpInterface;
+		myYarpInterface = new YarpInterface();
+		yarp::os::ConstString port = textEditorPort->getText().getCharPointer();
+		if (myYarpInterface->setPortName(port)) {
+			myYarpInterface->addChangeListener(this);
+			myYarpInterface->startThread();
+		}
+		else {
+			textEditorOutput->setText("Invalid port name! must start with '/'");
+		}
         //[/UserButtonCode_textButton]
     }
     else if (buttonThatWasClicked == textButtonDisconnect)
     {
         //[UserButtonCode_textButtonDisconnect] -- add your button handler code here..
 		DBG("disconnect btn\n");
+		myYarpInterface->stopThread(2000);
+
         //[/UserButtonCode_textButtonDisconnect]
     }
 

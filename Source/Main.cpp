@@ -11,6 +11,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 #include "GUIComponents.h"
+#include "YarpInterface.h"
 
 
 //==============================================================================

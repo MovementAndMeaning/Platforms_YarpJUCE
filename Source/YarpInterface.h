@@ -12,6 +12,27 @@
 #define YARPINTERFACE_H_INCLUDED
 
 #include <yarp/os/all.h>
+#include "../JuceLibraryCode/JuceHeader.h"
+
+class YarpInterface : public Thread, public ChangeBroadcaster {
+
+public:
+	YarpInterface();
+	~YarpInterface();
+	bool setPortName(yarp::os::ConstString name);
+	void run();
+
+	String getOutputText() {return textOutput;}
+
+	SpinLock lock;
+
+private:
+	String textOutput;
+	yarp::os::ConstString portName;
+	yarp::os::Network yarp;
+	yarp::os::BufferedPort<yarp::os::Bottle> yarpPort;
+};
+
 
 
 

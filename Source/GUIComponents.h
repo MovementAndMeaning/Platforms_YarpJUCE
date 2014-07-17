@@ -22,6 +22,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
+#include "YarpInterface.h"
 //[/Headers]
 
 
@@ -35,7 +36,8 @@
                                                                     //[/Comments]
 */
 class GUIComponents  : public Component,
-                       public ButtonListener
+                       public ButtonListener,
+					   public ChangeListener
 {
 public:
     //==============================================================================
@@ -44,16 +46,19 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+	void changeListenerCallback(ChangeBroadcaster* changeSource);
     //[/UserMethods]
 
     void paint (Graphics& g);
     void resized();
     void buttonClicked (Button* buttonThatWasClicked);
+	
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+	YarpInterface* myYarpInterface;
     //[/UserVariables]
 
     //==============================================================================
