@@ -32,6 +32,10 @@ Breakpoints_v2.xcbkptlist
 #JUCE specific: expect user to copy modules locally!
 JuceLibraryCode/modules
 
+!libYARP_OS.a
+!libYARP_init.a
+!libACE.dylib
+
 Testing
 Doxygen_output
 ports.db

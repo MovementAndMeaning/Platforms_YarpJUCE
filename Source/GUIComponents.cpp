@@ -174,9 +174,9 @@ void GUIComponents::buttonClicked (Button* buttonThatWasClicked)
 		if (myYarpInterface != NULL)
 			delete myYarpInterface;
 		myYarpInterface = new YarpInterface();
-		yarp::os::ConstString nsIP = textEditorNameserver->getText().getCharPointer();
+		yarp::os::ConstString nsIP = textEditorNameserver->getText().toRawUTF8();
 		myYarpInterface->setNSAddress(nsIP);
-		yarp::os::ConstString portstr = textEditorPort->getText().getCharPointer();
+		yarp::os::ConstString portstr = textEditorPort->getText().toRawUTF8();
 		if (myYarpInterface->setPortName(portstr)) {
 			myYarpInterface->addChangeListener(this);
 			myYarpInterface->startThread();
