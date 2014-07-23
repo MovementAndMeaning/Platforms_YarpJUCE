@@ -36,8 +36,8 @@
                                                                     //[/Comments]
 */
 class GUIComponents  : public Component,
-                       public ButtonListener,
-					   public ChangeListener
+                       public ChangeListener,
+                       public ButtonListener
 {
 public:
     //==============================================================================
@@ -52,7 +52,6 @@ public:
     void paint (Graphics& g);
     void resized();
     void buttonClicked (Button* buttonThatWasClicked);
-	
 
 
 
