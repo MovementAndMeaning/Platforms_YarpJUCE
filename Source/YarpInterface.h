@@ -32,9 +32,9 @@ private:
 	String textOutput;
 	yarp::os::ConstString portName;
 	yarp::os::ConstString nsIPAddr;
-	yarp::os::Network yarp;
-	yarp::os::impl::NameConfig nameConfig;
-	yarp::os::BufferedPort<yarp::os::Bottle> yarpPort;
+	ScopedPointer<yarp::os::Network> yarp;
+	ScopedPointer<yarp::os::impl::NameConfig> nameConfig;
+	ScopedPointer <yarp::os::BufferedPort<yarp::os::Bottle>> yarpPort;
 };
 
 

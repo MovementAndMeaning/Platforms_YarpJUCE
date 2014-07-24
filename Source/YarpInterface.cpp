@@ -12,14 +12,14 @@
 
 
 YarpInterface::YarpInterface() : Thread("YarpInterface Thread") {
-	yarp.init();
+	yarp->init();
 	
 }
 
 YarpInterface::~YarpInterface() {
 	DBG("destructor called. closing port and stopping thread");
-	yarpPort.close();
-	yarp.fini();
+	yarpPort->close();
+	yarp->fini();
 	stopThread(2000);
 }
 
@@ -43,13 +43,15 @@ void YarpInterface::run()  {
 
 	textOutput = "using nameserver at " + String(nsIPAddr.c_str())
 				+ "\nyarp reader open at " +String(portName.c_str())+"\n";
-	nameConfig.setManualConfig(nsIPAddr, 10000);
-	yarpPort.open(portName);
+    nameConfig = new yarp::os::impl::NameConfig;
+	nameConfig->setManualConfig(nsIPAddr, 10000);
+    yarpPort = new yarp::os::BufferedPort<yarp::os::Bottle>;
+	yarpPort->open(portName);
 	while( !threadShouldExit()) {
 		wait(1); //prevent 100% cpu use here; also assume that we won't get messages at > 1000Hz
-		if (yarpPort.getPendingReads()) {
+		if (yarpPort->getPendingReads()) {
 			//read port here
-			yarp::os::Bottle* bot = yarpPort.read();
+			yarp::os::Bottle* bot = yarpPort->read();
 			lock.enter();
 			if (textOutput.length() >= 512)
 				textOutput.clear(); //clear if too big.
@@ -59,7 +61,7 @@ void YarpInterface::run()  {
 			sendChangeMessage();
 		}
 	}
-	yarpPort.close();
+	yarpPort->close();
 	DBG("yarp read thread exiting...");
 }
 
